@@ -112,6 +112,8 @@ pre.process = function(data) {
 train = pre.process(read.csv('train.csv'))
 test = pre.process(read.csv('test.csv'))
 
+# TRAIN AND TEST
+
 # Declare target variables
 targets = c('num_views', 'num_votes', 'num_comments')
 n.target = length(targets)
