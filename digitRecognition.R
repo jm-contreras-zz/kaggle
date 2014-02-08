@@ -4,9 +4,6 @@
 library(caret)
 library(randomForest)
 
-# Source external functions
-source('selectFeatures.R')
-
 # Load training data
 train = read.csv('train.csv')
 test = read.csv('test.csv')
