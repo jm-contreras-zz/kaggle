@@ -10,8 +10,6 @@ pre.process = function(data) {
 
     # Declare variables
     n.example = nrow(data)
-    targets = c('num_views', 'num_votes', 'num_comments')
-    n.target = length(targets)
     
     # Identify cities
     kmeans.out = kmeans(data[, c('latitude', 'longitude')], 4)
@@ -114,8 +112,12 @@ pre.process = function(data) {
 train = pre.process(read.csv('train.csv'))
 test = pre.process(read.csv('test.csv'))
 
+# Declare target variables
+targets = c('num_views', 'num_votes', 'num_comments')
+n.target = length(targets)
+
 # Initialize submission matrix
-submission = matrix(nrow = n.example, ncol = n.target + 1)
+submission = matrix(nrow = nrow(test), ncol = n.target + 1)
 submission[, 1] = test$id
 
 # Loop through targets
@@ -143,5 +145,5 @@ for (i.target in 1:n.target) {
 submission[submission < 0] = 0
 
 # Write submission file
-write.table(submission, file = 'best_no_log.csv', col.names = c('id', targets),
-            sep = ',', row.names = FALSE)
+write.table(submission, file = 'submission.csv', col.names = c('id', targets),
+            sep = ',', row.names = F)
