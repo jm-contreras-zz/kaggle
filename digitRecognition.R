@@ -21,7 +21,7 @@ n.test = nrow(test)
 
 # CREATE NEW FEATURES
 
-create.features <- function(data, n.pix.row) {
+create.features = function(data, n.pix.row) {
     
     # COUNT DARK PIXELS
     dark.pix = rowSums(data > 0)
@@ -55,7 +55,7 @@ create.features <- function(data, n.pix.row) {
 
 # PRE-PROCESS
 
-pre.process <- function(data, new.features) {
+pre.process = function(data, new.features) {
     
     # Remove features with zero and near-zero variance
     zero.var.ind = nearZeroVar(data)
