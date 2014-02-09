@@ -15,4 +15,4 @@ kaggle
 
 - ***digits.R***, written for the [Digit Recognizer competition](http://www.kaggle.com/c/digit-recognizer), uses random forests to analyze pixel data from black-and-white digit images to predict the number that each image represents. Its operations include the following.
   - Creation of new features (number of dark pixels in each image and metrics for horizontal and vertical symmetry)
-  - Removal of redundant and irrelevant features
+  - Removal of redundant and low-variance features
