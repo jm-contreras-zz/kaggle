@@ -1,7 +1,6 @@
 # SETUP
 
-# Load packages
-library(Metrics)
+# Load package
 library(cluster)
 
 # PRE-PROCESS
