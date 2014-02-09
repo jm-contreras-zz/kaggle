@@ -106,7 +106,6 @@ pre.process = function(data, train.or.test) {
         this.time = as.numeric(strsplit(all.date.time[[i.ex]][2], split = ':')[[1]])
         
         # Populate time and date matrix
-        this.weekday = as.POSIXlt(this.date)$wday
         when.matrix[i.ex, 1] = as.numeric(format(this.date, "%Y"))  # Year
         when.matrix[i.ex, 2] = as.numeric(format(this.date, "%m"))  # Month
         when.matrix[i.ex, 3] = as.numeric(format(this.date, "%d"))  # Day
