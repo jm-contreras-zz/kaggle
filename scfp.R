@@ -124,8 +124,8 @@ pre.process = function(data, train.or.test) {
 }
 
 # Load and pre-process training and testing data
-train = pre.process(read.csv('train.csv'))
-test = pre.process(read.csv('test.csv'))
+train = pre.process(read.csv('train.csv'), 'train')
+test = pre.process(read.csv('test.csv'), 'test')
 
 # TRAIN AND TEST
 
