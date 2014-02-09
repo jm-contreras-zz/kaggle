@@ -6,7 +6,7 @@ library(cluster)
 
 # PRE-PROCESS
 
-pre.process = function(data) {
+pre.process = function(data, train.or.test) {
 
     # Declare variables
     n.example = nrow(data)
@@ -26,14 +26,29 @@ pre.process = function(data) {
     tag.table = sort(table(data$tag_type), decreasing = T)
     
     # Assign keywords for text mining
-    key.words = c('trash', 'graffiti', 'hole', 'overgrowth', 'tree', 'light',
-                  'blighted', 'sidewalk', 'sign', 'drain', 'bike', 'road',
-                  'traffic', 'abandon', 'street sign', 'drug', 'crosswalk',
-                  'bridge', 'noise', 'idling', 'bench', 'animal', 'rat', 'hydrant',
+    if (train.or.test = 'train') {
+    
+        key.words = c('trash', 'tree', 'hole', 'graffiti', 'light', 'hydrant', 'sign',
+                  'overgrowth', 'sidewalk', 'blighted', 'traffic', 'snow', 'drain',
+                  'road', 'bridge', 'bike', 'homeless', 'flood', 'abandon',
+                  'crosswalk', 'drug', 'robbe', 'meter', 'animal', 'bench', 'smell',
                   'loud', 'test', 'idling', 'signal', 'rat', 'hot', 'prosti',
-                  'smell', 'homeless', 'meter', 'pedestrian light', 'robbe',
-                  'snow', 'hot', 'reckless driv', 'test', 'zoning', 'roadkill',
-                  'flood', 'prosti')
+                  'roadkill', 'reckless driv', 'pedestrian light', 'zoning', 'lost',
+                  'public art', 'public concern')
+                  
+    } else if (train.or.test = 'test') {
+    
+        key.words = c('trash', 'graffiti', 'hole', 'overgrowth', 'tree', 'light',
+                      'blighted', 'sidewalk', 'sign', 'drain', 'bike', 'road',
+                      'traffic', 'abandon', 'street sign', 'drug', 'crosswalk',
+                      'bridge', 'noise', 'idling', 'bench', 'animal', 'rat', 'hydrant',
+                      'loud', 'test', 'idling', 'signal', 'rat', 'hot', 'prosti',
+                      'smell', 'homeless', 'meter', 'pedestrian light', 'robbe',
+                      'snow', 'hot', 'reckless driv', 'test', 'zoning', 'roadkill',
+                      'flood', 'prosti')
+                      
+    }
+    
     n.keys = length(key.words)
     
     # Identify examples with missing tags
