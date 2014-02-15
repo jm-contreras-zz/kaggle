@@ -103,10 +103,6 @@ for (i.rep in 1:n.rep) {
     # Loop through folds
     for (i.fold in 1:n.fold) {
         
-        # Communicate progress
-        print(paste0('Working on fold ', i.fold, ' in repetition ', i.rep, '.'),
-              quote = F)
-        
         # Declare indices for train and test examples
         train.ind = examples[folds != i.fold]
         test.ind = examples[folds == i.fold]
