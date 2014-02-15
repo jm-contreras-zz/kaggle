@@ -1,3 +1,10 @@
+################
+# DECLARATIONS #
+################
+
+n.rep  = 25 # Number of k-fold cross-validation rounds
+n.fold = 10 # Number of folds
+
 #############
 # LOAD DATA #
 #############
@@ -55,7 +62,6 @@ data.dv = cbind(data.dv, dv)
 ###############
 
 # Initialize repetitions data frame
-n.rep = 25
 emp.vec = rep(0, n.rep)
 rep.df = data.frame(DT  = emp.vec, # Decision trees
                     RF  = emp.vec, # Random forests
@@ -65,8 +71,7 @@ rep.df = data.frame(DT  = emp.vec, # Decision trees
                     LDA = emp.vec, # Linear discriminant analysis
                     ADA = emp.vec, # Adaptive boosting
                     KNN = emp.vec, # K-nearest neighbors
-                    SVM = emp.vec, # Support vector machines
-                    ENS = emp.vec) # Ensemble
+                    SVM = emp.vec) # Ensemble
 
 for (i.rep in 1:n.rep) {
 
@@ -78,7 +83,6 @@ for (i.rep in 1:n.rep) {
     library(cvTools)
     
     # Create cross-validation folds
-    n.fold = 10
     cv = cvFolds(n.ex, n.fold)
     folds = cv$which
     examples = cv$subsets
@@ -93,8 +97,7 @@ for (i.rep in 1:n.rep) {
                        LDA = emp.vec, # Linear discriminant analysis
                        ADA = emp.vec, # Adaptive boosting
                        KNN = emp.vec, # K-nearest neighbors
-                       SVM = emp.vec, # Support vector machines
-                       ENS = emp.vec) # Ensemble
+                       SVM = emp.vec)
     
     ##################
     # CLASSIFICATION #
@@ -219,13 +222,6 @@ for (i.rep in 1:n.rep) {
         svm = svm(Survived ~ ., data.dv, subset = train.ind)
         pred = predict(svm, test.data.dv)
         cv.df[i.fold, 'SVM'] = mean(pred == real)
-        
-        ############
-        # EMSEMBLE #
-        ############
-        
-        # Compute mean accuracy
-        cv.df[i.fold, 'ENS'] = rowMeans(cv.df[i.fold, 1:9])
     
     }
     
