@@ -17,4 +17,4 @@ kaggle
   - Creation of new features (number of dark pixels in each image and metrics for horizontal and vertical symmetry)
   - Removal of redundant and low-variance features
 
-- ***classifierMelee.R*** uses multiple rounds of 10-fold cross-validation with the training data from the Titanic competition to assess the classification accuracy of 9 different classifiers.
+- ***classifierMelee.R*** uses multiple rounds of *k*-fold cross-validation with the training data from the Titanic competition to assess the classification accuracy of 9 different classifiers. The results are stored in a data frame for further analysis or visualization.
