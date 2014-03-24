@@ -1,7 +1,7 @@
 kaggle
 ======
 
-**Repository of R scripts that I wrote to take part in three predictive modeling competitions hosted by [Kaggle](http://www.kaggle.com/).** Each script requires that the training and testing data from its respective competition are located in the current working directory in the form of CSV files. As output, each script produces a CSV file called *submission*, which can be submitted to its respective competition.
+**Repository of R scripts that I wrote to take part in three predictive modeling competitions hosted by [Kaggle](http://www.kaggle.com/).** Each script requires that the training and testing data from its respective competition are located in the current working directory in the form of CSV files. As output, each script produces a CSV file called *submission*, which can be submitted to its competition.
 
 - **scfp.R**, written for the [See Click Fix Predict competition](http://www.kaggle.com/c/see-click-predict-fix), uses linear regression to predict the number of user comments, views, and votes on non-emergency issues from 4 US cities. Its operations include the following.
   - Clustering of issue coordinates with *k*-means to identify the city of provenance as a feature
